@@ -16,7 +16,7 @@ export const createContact = async(req : Request, res : Response) =>{
             data : contacts 
         })
 
-    } catch (error) {
+    } catch (error : any) {
         return res.status(404).json({
             message: "Error",
             data : error.message 
@@ -26,14 +26,14 @@ export const createContact = async(req : Request, res : Response) =>{
 
 export const viewContact = async(req : Request, res : Response) =>{
     try {
-        const contacts = await contactModel.find().sort({name : 1}) 
+        const contacts = await contactModel.find().sort({createdAt : -1}) 
        
         return res.status(200).json({
             message: "Contact viewed",
             data : contacts
         })
 
-    } catch (error) {
+    } catch (error : any) {
         return res.status(404).json({
             message: "Error",
             data : error.message 
@@ -43,7 +43,7 @@ export const viewContact = async(req : Request, res : Response) =>{
 
 export const searchCategory = async(req : Request, res : Response) =>{
     try {
-        const {category} = req.body
+        const {category} = req.params
 
         const contacts = await contactModel.find({category}).sort({createdAt : -1})
 
@@ -52,7 +52,7 @@ export const searchCategory = async(req : Request, res : Response) =>{
             data : contacts 
         })
 
-    } catch (error) {
+    } catch (error : any) {
         return res.status(404).json({
             message: "Error",
             data : error.message 
@@ -76,7 +76,7 @@ export const updateContact = async(req : Request, res : Response) =>{
             data : contacts
         })
 
-    } catch (error) {
+    } catch (error : any) {
         return res.status(404).json({
             message: "Error",
             data : error.message 
@@ -95,7 +95,7 @@ export const deleteContact = async(req : Request, res : Response) =>{
             message: `${contacts?.name} deleted`,
         })
 
-    } catch (error) {
+    } catch (error : any) {
         return res.status(404).json({
             message: "Error",
             data : error.message 
