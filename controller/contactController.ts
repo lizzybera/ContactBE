@@ -43,7 +43,7 @@ export const viewContact = async(req : Request, res : Response) =>{
 
 export const searchCategory = async(req : Request, res : Response) =>{
     try {
-        const {category} = req.params
+        const {category} = req.body
 
         const contacts = await contactModel.find({category}).sort({createdAt : -1})
 

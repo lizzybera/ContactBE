@@ -52,7 +52,7 @@ const viewContact = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.viewContact = viewContact;
 const searchCategory = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { category } = req.params;
+        const { category } = req.body;
         const contacts = yield contactModel_1.default.find({ category }).sort({ createdAt: -1 });
         return res.status(200).json({
             message: "Contact searched",
