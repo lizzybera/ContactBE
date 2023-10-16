@@ -6,7 +6,7 @@ const Router = express.Router()
 Router.route("/contacts").post(createContact)
 Router.route("/view-contacts").get(viewContact)
 
-Router.route("/:category/search").get(searchCategory)
+Router.route("/search").get(searchCategory)
 
 Router.route("/:contactID/update").patch(updateContact)
 
