@@ -47,7 +47,7 @@ export const searchCategory = async(req : Request, res : Response) =>{
 
         const contacts = await contactModel.find({category}).sort({createdAt : -1})
 
-        return res.status(200).json({
+        return res.status(201).json({
             message: "Contact searched",
             data : contacts 
         })
